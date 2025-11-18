@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STUDIO LS - Estilo e Qualidade</title>
-    <!-- Carrega o Tailwind CSS para um design moderno e responsivo -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Ícones Lucide -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Carrega o Tailwind CSS para um design moderno e responsivo --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Ícones Lucide --><script src="https://unpkg.com/lucide@latest"></script>
     <style>
         /* Variáveis de Cores */
         :root {
             --bg-dark: #262626; /* Preto/Verde Oliva Escuro do design */
             --primary-gold: #A48D55; /* Dourado/Bronze de destaque */
+            --light-gold-text: #D4AF37; /* Dourado mais claro para o texto STUDIO LS */
             --text-light: #f3f4f6;
         }
 
@@ -141,22 +140,19 @@
 </head>
 <body class="min-h-screen flex items-start justify-center p-6 sm:p-8">
 
-    <!-- Container Principal do Aplicativo/Landing Page -->
-    <div id="main-container" class="w-full max-w-sm mx-auto pt-10 pb-8 initial-hidden"> 
+    <!-- Container Principal do Aplicativo/Landing Page --><div id="main-container" class="w-full max-w-sm mx-auto pt-10 pb-8 initial-hidden"> 
         
-        <!-- 1. Cabeçalho e Logo -->
-        <header class="text-center mb-12">
+        <!-- 1. Cabeçalho e Logo --><header class="text-center mb-12">
             
-            <!-- SUA LOGO EM PNG AQUI -->
-            <div class="mb-3">
-                <!-- Certifique-se de que o arquivo 'logo.png' está no repositório! -->
-                <img id="main-logo" src="./logo.png" alt="Logo STUDIO LS" 
-                     class="w-24 h-24 mx-auto rounded-full object-cover border-2 border-primary-gold p-1"
+            <!-- SUA LOGO EM PNG AQUI --><div class="mb-3">
+                <!-- AJUSTE: Círculo da logo agora é dourado --><img id="main-logo" src="./logo.png" alt="Logo STUDIO LS" 
+                     class="w-24 h-24 mx-auto rounded-full object-cover border-2 p-1"
+                     style="border-color: var(--primary-gold);" /* Aplicando a cor dourada aqui */
                      onerror="this.onerror=null; this.src='https://placehold.co/96x96/262626/A48D55?text=LOGO';"
                      title="Logo STUDIO LS">
             </div>
             
-            <h1 class="text-3xl font-bold tracking-widest" style="color: var(--text-light);">
+            <!-- AJUSTE: Nome STUDIO LS com dourado mais claro e fonte mais grossa --><h1 class="text-3xl font-extrabold tracking-widest" style="color: var(--light-gold-text);"> 
                 STUDIO LS
             </h1>
             <p class="text-sm font-light uppercase mt-1 tracking-wide" style="color: var(--primary-gold);">
@@ -164,33 +160,27 @@
             </p>
         </header>
 
-        <!-- 2. Seção de Botões de Ação (Ações principais) -->
-        <!-- AJUSTE: Usando space-y-5 para melhor espaçamento vertical -->
-        <main id="main-actions" class="space-y-5"> 
+        <!-- 2. Seção de Botões de Ação (Ações principais) --><main id="main-actions" class="space-y-5"> 
 
-            <!-- Botão: AGENDAR HORÁRIO (WhatsApp) -->
-            <a id="whatsapp-link" href="#" target="_blank"
+            <!-- Botão: AGENDAR HORÁRIO (WhatsApp) --><a id="whatsapp-link" href="#" target="_blank"
                class="gold-btn w-full flex items-center justify-center p-3.5 rounded-full font-bold text-base uppercase shadow-lg">
                 <i data-lucide="calendar-check" class="w-5 h-5 mr-3"></i>
                 AGENDAR HORÁRIO
             </a>
 
-            <!-- Botão: COMO CHEGAR (Google Maps) -->
-            <a id="maps-link" href="#" target="_blank"
+            <!-- Botão: COMO CHEGAR (Google Maps) --><a id="maps-link" href="#" target="_blank"
                class="gold-btn w-full flex items-center justify-center p-3.5 rounded-full font-bold text-base uppercase shadow-lg">
                 <i data-lucide="map-pin" class="w-5 h-5 mr-3"></i>
                 COMO CHEGAR
             </a>
 
-            <!-- Botão: TABELA DE PREÇOS (Abre Modal/Nova Seção) -->
-            <button onclick="openPricesModal()"
+            <!-- Botão: TABELA DE PREÇOS (Abre Modal/Nova Seção) --><button onclick="openPricesModal()"
                     class="gold-btn w-full flex items-center justify-center p-3.5 rounded-full font-bold text-base uppercase shadow-lg">
                 <i data-lucide="book-open-text" class="w-5 h-5 mr-3"></i>
                 TABELA DE PREÇOS
             </button>
 
-            <!-- Botão: INSTAGRAM -->
-            <a id="instagram-link" href="#" target="_blank"
+            <!-- Botão: INSTAGRAM --><a id="instagram-link" href="#" target="_blank"
                class="gold-btn w-full flex items-center justify-center p-3.5 rounded-full font-bold text-base uppercase shadow-lg">
                 <i data-lucide="instagram" class="w-5 h-5 mr-3"></i>
                 INSTAGRAM
@@ -198,11 +188,9 @@
 
         </main>
         
-        <!-- 3. Imagem da Barbearia (Abaixo dos botões) -->
-        <section class="mt-12">
+        <!-- 3. Imagem da Barbearia (Abaixo dos botões) --><section class="mt-12">
             <div class="image-container">
-                <!-- Certifique-se de que o arquivo 'barber_shop.png' está no repositório! -->
-                <img src="./barber_shop.png" 
+                <!-- Certifique-se de que o arquivo 'barber_shop.png' está no repositório! --><img src="./barber_shop.png" 
                      onerror="this.onerror=null;this.src='https://placehold.co/600x400/363636/A48D55?text=Studio+LS+Ambiente';"
                      alt="Imagem do ambiente interno da Studio LS Barbearia.">
             </div>
@@ -210,12 +198,10 @@
 
     </div>
 
-    <!-- Modal/Seção de Tabela de Preços e Produtos -->
-    <div id="prices-modal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-90 flex items-start justify-center p-4 overflow-y-auto">
+    <!-- Modal/Seção de Tabela de Preços e Produtos --><div id="prices-modal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-90 flex items-start justify-center p-4 overflow-y-auto">
         
         <div class="w-full max-w-xl mx-auto my-8 p-6 sm:p-8 rounded-xl shadow-2xl relative" style="background-color: #1a1a1a;">
-            <!-- Botão de Fechar -->
-            <button onclick="closePricesModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition duration-200">
+            <!-- Botão de Fechar --><button onclick="closePricesModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition duration-200">
                 <i data-lucide="x" class="w-8 h-8"></i>
             </button>
 
@@ -223,60 +209,45 @@
                 TABELA DE VALORES
             </h2>
 
-            <!-- CONTEÚDO DA TABELA DE PREÇOS -->
-            <div id="prices-content" class="space-y-10">
+            <!-- CONTEÚDO DA TABELA DE PREÇOS --><div id="prices-content" class="space-y-10">
                 
-                <!-- Seção 1: Serviços (Lista lateral, como na sua imagem) -->
-                <section>
+                <!-- Seção 1: Serviços (Lista lateral, como na sua imagem) --><section>
                     <h3 class="text-2xl font-semibold mb-5 border-b pb-2 flex items-center" style="border-color: rgba(164, 141, 85, 0.4);">
                         <i data-lucide="scissors" class="w-6 h-6 mr-3 inline-block" style="color: var(--primary-gold);"></i>
                         SERVIÇOS
                     </h3>
                     <div class="space-y-3" id="services-list">
-                        <!-- Itens de serviço serão gerados aqui via JavaScript -->
-                    </div>
+                        <!-- Itens de serviço serão gerados aqui via JavaScript --></div>
                 </section>
                 
-                <!-- BOTÃO DE AGENDAMENTO (CHAMADA PARA AÇÃO) -->
-                <div class="text-center pt-2 pb-6">
-                    <!-- Linha divisória antes do CTA -->
-                    <hr class="border-gray-700 mb-6">
+                <!-- BOTÃO DE AGENDAMENTO (CHAMADA PARA AÇÃO) --><div class="text-center pt-2 pb-6">
+                    <!-- Linha divisória antes do CTA --><hr class="border-gray-700 mb-6">
                     <a id="whatsapp-link-modal" href="#" target="_blank"
                         class="gold-btn inline-flex items-center justify-center px-8 py-4 rounded-full font-bold text-lg uppercase shadow-lg">
                         <i data-lucide="calendar-check" class="w-6 h-6 mr-3"></i>
                         AGENDAR AGORA
                     </a>
                 </div>
-                <!-- FIM DO BOTÃO -->
-
-                <!-- Seção 2: Produtos (Nova seção com imagens) -->
-                <section>
+                <!-- FIM DO BOTÃO --><!-- Seção 2: Produtos (Nova seção com imagens) --><section>
                     <h3 class="text-2xl font-semibold mb-5 border-b pb-2 flex items-center" style="border-color: rgba(164, 141, 85, 0.4);">
                         <i data-lucide="box" class="w-6 h-6 mr-3 inline-block" style="color: var(--primary-gold);"></i>
                         PRODUTOS
                     </h3>
-                    <!-- Grid para exibir cards de produto lado a lado em mobile -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="products-list">
-                        <!-- Itens de produtos serão gerados aqui via JavaScript -->
-                    </div>
+                    <!-- Grid para exibir cards de produto lado a lado em mobile --><div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="products-list">
+                        <!-- Itens de produtos serão gerados aqui via JavaScript --></div>
                 </section>
 
-                <!-- Seção 3: Cervejas (Nova seção com imagens) -->
-                <section>
+                <!-- Seção 3: Cervejas (Nova seção com imagens) --><section>
                     <h3 class="text-2xl font-semibold mb-5 border-b pb-2 flex items-center" style="border-color: rgba(164, 141, 85, 0.4);">
                         <i data-lucide="beer" class="w-6 h-6 mr-3 inline-block" style="color: var(--primary-gold);"></i>
                         CERVEJAS
                     </h3>
-                    <!-- Grid para exibir cards de cerveja lado a lado em mobile -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="beers-list">
-                        <!-- Itens de cervejas serão gerados aqui via JavaScript -->
-                    </div>
+                    <!-- Grid para exibir cards de cerveja lado a lado em mobile --><div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="beers-list">
+                        <!-- Itens de cervejas serão gerados aqui via JavaScript --></div>
                 </section>
                 
             </div>
-            <!-- Fim do Conteúdo de Preços -->
-
-            <div class="text-center pt-10">
+            <!-- Fim do Conteúdo de Preços --><div class="text-center pt-10">
                 <button onclick="closePricesModal()" 
                     class="gold-btn px-8 py-3 rounded-full font-bold text-base uppercase">
                     Fechar Tabela
@@ -298,7 +269,8 @@
         const barbershopName = "STUDIO LS";
         // O número deve ser o completo: Código do País (55) + DDD (98) + Número (84367651)
         const whatsappNumber = "559884367651"; 
-        const mapLink = "https://maps.app.goo.gl/1ZWi5VHSQRY95uNq7?g_st=ipc"; 
+        // AJUSTE: Link do Google Maps Atualizado
+        const mapLink = "https://maps.app.goo.gl/4ri4sobDrukmCrt67"; 
         const instagramHandle = "studiols_981"; 
 
         // 2. TABELA DE SERVIÇOS E PREÇOS 
@@ -420,7 +392,7 @@
                 mainContainer.classList.add('initial-visible');
             }, 50);
 
-            // MENSAGEM SIMPLIFICADA (Ajustada conforme o pedido)
+            // Mensagem pré-preenchida
             const prefilledMessage = 
                 `Olá ${barbershopName}! Gostaria de agendar um horário.`;
 
@@ -429,7 +401,8 @@
 
             // Atualização de todos os links
             document.getElementById('whatsapp-link').href = whatsappUrl;
-            document.getElementById('maps-link').href = mapLink;
+            // AJUSTE: Link do Google Maps Atualizado
+            document.getElementById('maps-link').href = mapLink; 
             document.getElementById('instagram-link').href = `https://www.instagram.com/${instagramHandle}`;
             
             const whatsappLinkModal = document.getElementById('whatsapp-link-modal');

@@ -42,7 +42,7 @@
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px -1px rgba(0, 0, 0, 0.2);
         }
 
-        /* Animação de entrada */
+        /* Animação de entrada da Landing Page */
         .initial-hidden {
             opacity: 0;
             transform: translateY(20px);
@@ -84,7 +84,7 @@
         .product-card {
             text-align: center;
             padding: 1rem;
-            background-color: #1a1a1a; /* Fundo preto escuro para combinar com PNGs transparentes */
+            background-color: #1a1a1a; 
             border-radius: 0.75rem;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             display: flex;
@@ -94,26 +94,46 @@
             height: 100%; 
         }
         
-        /* CORREÇÃO APLICADA AQUI: Ajusta o contêiner da imagem */
+        /* Contêiner da imagem dentro do card */
         .product-image-container {
             width: 100%;
-            max-width: 180px; /* Aumentado para dar mais destaque */
-            height: 180px; /* Tamanho fixo para padronização */
+            max-width: 180px; 
+            height: 180px; 
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 0.5rem;
             border-radius: 0.5rem;
-            background-color: #1a1a1a; /* Garante que o fundo da imagem seja o mesmo do card */
-            overflow: hidden; /* Garante que nada saia do container */
+            background-color: #1a1a1a; 
+            overflow: hidden; 
         }
         
-        /* CORREÇÃO APLICADA AQUI: A imagem preenche o container sem ser cortada */
         .product-image-container img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Faz a imagem caber no espaço sem cortar, mantendo proporção */
-            margin: auto; /* Centraliza a imagem no container */
+            object-fit: contain; /* Ajusta a imagem dentro do container */
+            margin: auto; 
+        }
+
+        /* --- ANIMAÇÃO PARA OS ITENS DO MODAL --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            opacity: 0;
+        }
+        
+        /* A classe 'animate' será adicionada via JavaScript */
+        .fade-in-up.animate {
+            animation: fadeInUp 0.5s ease-out forwards;
         }
 
     </style>
@@ -128,7 +148,7 @@
             
             <!-- SUA LOGO EM PNG AQUI -->
             <div class="mb-3">
-                <!-- Por padrão, o nome do arquivo da logo é 'logo.png'. Mude se necessário. -->
+                <!-- Certifique-se de que o arquivo 'logo.png' está no repositório! -->
                 <img id="main-logo" src="./logo.png" alt="Logo STUDIO LS" 
                      class="w-24 h-24 mx-auto rounded-full object-cover border-2 border-primary-gold p-1"
                      onerror="this.onerror=null; this.src='https://placehold.co/96x96/262626/A48D55?text=LOGO';"
@@ -179,7 +199,7 @@
         <!-- 3. Imagem da Barbearia (Abaixo dos botões) -->
         <section class="mt-12">
             <div class="image-container">
-                <!-- Por padrão, o nome do arquivo da imagem principal é 'barber_shop.png'. Mude se necessário. -->
+                <!-- Certifique-se de que o arquivo 'barber_shop.png' está no repositório! -->
                 <img src="./barber_shop.png" 
                      onerror="this.onerror=null;this.src='https://placehold.co/600x400/363636/A48D55?text=Studio+LS+Ambiente';"
                      alt="Imagem do ambiente interno da Studio LS Barbearia.">
@@ -269,16 +289,13 @@
         lucide.createIcons();
 
         // ----------------------------------------------------------------------
-        //  *** CONFIGURAÇÃO DE DADOS REAIS - ATUALIZADA COM SEUS LINKS ***
+        //  *** CONFIGURAÇÃO DE DADOS REAIS - FINAL ***
         // ----------------------------------------------------------------------
         
         // 1. DADOS DE CONTATO E REDES SOCIAIS
         const barbershopName = "STUDIO LS";
-        // Seu WhatsApp no formato: 55 + DDD + Número. (Apenas números)
         const whatsappNumber = "559884367651"; 
-        // Link de localização (Google Maps)
         const mapLink = "https://maps.app.goo.gl/1ZWi5VHSQRY95uNq7?g_st=ipc"; 
-        // Apenas o nome do seu Instagram, sem o @
         const instagramHandle = "studiols_981"; 
 
         // 2. TABELA DE SERVIÇOS E PREÇOS 
@@ -301,7 +318,7 @@
         ];
 
         // ----------------------------------------------------------------------
-        // NADA ABAIXO DESTA LINHA PRECISA SER ALTERADO
+        // LÓGICA DE GERAÇÃO E ANIMAÇÃO
         // ----------------------------------------------------------------------
 
         const pricesModal = document.getElementById('prices-modal');
@@ -309,8 +326,9 @@
         // Função para gerar o HTML de um item de SERVIÇO (lista)
         function generateServiceItem(item) {
             const primaryGold = getComputedStyle(document.documentElement).getPropertyValue('--primary-gold').trim();
+            // Adicionando a classe de animação 'fade-in-up'
             return `
-                <div class="service-item">
+                <div class="service-item fade-in-up">
                     <span class="text-lg font-medium">${item.name}</span>
                     <span class="text-xl font-bold whitespace-nowrap" style="color: ${primaryGold};">${item.price}</span>
                 </div>
@@ -320,13 +338,12 @@
         // Função para gerar o HTML de um item de PRODUTO/CERVEJA (card com imagem)
         function generateProductCard(item) {
             const primaryGold = getComputedStyle(document.documentElement).getPropertyValue('--primary-gold').trim();
-            // Fallback para caso o arquivo de imagem não seja encontrado
             const fallbackText = item.name.split(' ').slice(0, 2).join('+').toUpperCase();
             const imgUrl = item.imageSrc || `https://placehold.co/180x180/1a1a1a/A48D55?text=IMAGEM`;
             
+            // Adicionando a classe de animação 'fade-in-up'
             return `
-                <div class="product-card">
-                    <!-- CONTÊINER NOVO: Garante o tamanho fixo para a imagem -->
+                <div class="product-card fade-in-up">
                     <div class="product-image-container">
                         <img src="${imgUrl}" alt="${item.name}" 
                              onerror="this.onerror=null; this.src='https://placehold.co/180x180/1a1a1a/A48D55?text=${fallbackText}';"
@@ -337,41 +354,69 @@
                 </div>
             `;
         }
+        
+        // Função para aplicar a animação em cascata (item por item)
+        function animateItems(listId) {
+            const items = document.querySelectorAll(`#${listId} .fade-in-up`);
+            items.forEach((item, index) => {
+                // Aplica um atraso crescente (50ms por item)
+                item.style.animationDelay = `${index * 50}ms`;
+                item.classList.add('animate');
+            });
+        }
 
 
         // Função para preencher todas as listas do modal
         function renderPrices() {
+            // Limpa o conteúdo antes de renderizar
+            document.getElementById('services-list').innerHTML = '';
+            document.getElementById('products-list').innerHTML = '';
+            document.getElementById('beers-list').innerHTML = '';
+            
+            // Renderiza o HTML (neste ponto, eles estão invisíveis)
             document.getElementById('services-list').innerHTML = SERVICES_DATA.map(generateServiceItem).join('');
             document.getElementById('products-list').innerHTML = PRODUCTS_DATA.map(generateProductCard).join('');
             document.getElementById('beers-list').innerHTML = BEERS_DATA.map(generateProductCard).join('');
+            
+            // Chama a animação para cada lista após a renderização
+            animateItems('services-list');
+            animateItems('products-list');
+            animateItems('beers-list');
         }
         
         // Lógica do Modal (Abrir/Fechar)
         function openPricesModal() {
-            renderPrices(); 
             pricesModal.classList.remove('hidden');
             pricesModal.classList.add('flex');
             document.body.style.overflow = 'hidden'; 
+            
+            // Renderiza e anima quando o modal é aberto
+            renderPrices(); 
         }
 
         function closePricesModal() {
             pricesModal.classList.add('hidden');
             pricesModal.classList.remove('flex');
             document.body.style.overflow = ''; 
+            
+            // Remove a classe de animação para garantir que o modal abra limpo na próxima vez
+            document.querySelectorAll('.fade-in-up').forEach(item => {
+                item.classList.remove('animate');
+                item.style.animationDelay = '';
+            });
         }
 
         // Lógica de Inicialização
         document.addEventListener('DOMContentLoaded', () => {
             const mainContainer = document.getElementById('main-container');
 
-            // Animação de entrada
+            // Animação de entrada da Landing Page
             setTimeout(() => {
                 mainContainer.classList.remove('initial-hidden');
                 mainContainer.classList.add('initial-visible');
             }, 50);
 
-            // Calcula o URL do WhatsApp (usa o número limpo)
-            // Usa o link de Catálogo se o número fornecido for de catálogo
+            // Calcula o URL do WhatsApp (direciona para o catálogo)
             const whatsappUrl = `https://wa.me/c/${whatsappNumber.substring(2)}?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20${barbershopName}.`;
 
             // Atualização de todos os links

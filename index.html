@@ -92,6 +92,7 @@
             align-items: center;
             justify-content: space-between;
             height: 100%; 
+            color: var(--text-light); 
         }
         
         /* Contêiner da imagem dentro do card */
@@ -111,7 +112,7 @@
         .product-image-container img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Ajusta a imagem dentro do container */
+            object-fit: contain; 
             margin: auto; 
         }
 
@@ -141,7 +142,8 @@
 <body class="min-h-screen flex items-start justify-center p-6 sm:p-8">
 
     <!-- Container Principal do Aplicativo/Landing Page -->
-    <div id="main-container" class="w-full max-w-sm mx-auto pt-10 pb-8 initial-hidden">
+    <!-- AJUSTE: Aumentei o espaçamento interno (pt-10 pb-8) para garantir respiro -->
+    <div id="main-container" class="w-full max-w-sm mx-auto pt-10 pb-8 initial-hidden"> 
         
         <!-- 1. Cabeçalho e Logo -->
         <header class="text-center mb-12">
@@ -164,7 +166,8 @@
         </header>
 
         <!-- 2. Seção de Botões de Ação (Ações principais) -->
-        <main id="main-actions" class="space-y-4">
+        <!-- AJUSTE: Alterei 'space-y-4' para 'space-y-5' para dar mais respiro vertical -->
+        <main id="main-actions" class="space-y-5"> 
 
             <!-- Botão: AGENDAR HORÁRIO (WhatsApp) -->
             <a id="whatsapp-link" href="#" target="_blank"
@@ -294,6 +297,7 @@
         
         // 1. DADOS DE CONTATO E REDES SOCIAIS
         const barbershopName = "STUDIO LS";
+        // O número deve ser o completo: Código do País (55) + DDD (98) + Número (84367651)
         const whatsappNumber = "559884367651"; 
         const mapLink = "https://maps.app.goo.gl/1ZWi5VHSQRY95uNq7?g_st=ipc"; 
         const instagramHandle = "studiols_981"; 
@@ -339,7 +343,8 @@
         function generateProductCard(item) {
             const primaryGold = getComputedStyle(document.documentElement).getPropertyValue('--primary-gold').trim();
             const fallbackText = item.name.split(' ').slice(0, 2).join('+').toUpperCase();
-            const imgUrl = item.imageSrc || `https://placehold.co/180x180/1a1a1a/A48D55?text=IMAGEM`;
+            // O fallback usa o fundo escuro do card
+            const imgUrl = item.imageSrc || `https://placehold.co/180x180/1a1a1a/A48D55?text=IMAGEM`; 
             
             // Adicionando a classe de animação 'fade-in-up'
             return `
@@ -416,8 +421,12 @@
                 mainContainer.classList.add('initial-visible');
             }, 50);
 
-            // Calcula o URL do WhatsApp (direciona para o catálogo)
-            const whatsappUrl = `https://wa.me/c/${whatsappNumber.substring(2)}?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20${barbershopName}.`;
+            // Mensagem pré-preenchida
+            const prefilledMessage = 
+                `Olá ${barbershopName}! Gostaria de agendar um horário.%0A%0ASolicito os seguintes dados para o agendamento:%0A%0A1. Qual serviço você deseja? (Ex: Corte, Barba, Combo)%0A2. Qual o seu nome completo?%0A3. Qual o melhor dia e horário para você?`;
+
+            // CRIAÇÃO DA URL FINAL
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${prefilledMessage}`;
 
             // Atualização de todos os links
             document.getElementById('whatsapp-link').href = whatsappUrl;

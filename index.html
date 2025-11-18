@@ -142,7 +142,6 @@
 <body class="min-h-screen flex items-start justify-center p-6 sm:p-8">
 
     <!-- Container Principal do Aplicativo/Landing Page -->
-    <!-- AJUSTE: Aumentei o espaçamento interno (pt-10 pb-8) para garantir respiro -->
     <div id="main-container" class="w-full max-w-sm mx-auto pt-10 pb-8 initial-hidden"> 
         
         <!-- 1. Cabeçalho e Logo -->
@@ -166,7 +165,7 @@
         </header>
 
         <!-- 2. Seção de Botões de Ação (Ações principais) -->
-        <!-- AJUSTE: Alterei 'space-y-4' para 'space-y-5' para dar mais respiro vertical -->
+        <!-- AJUSTE: Usando space-y-5 para melhor espaçamento vertical -->
         <main id="main-actions" class="space-y-5"> 
 
             <!-- Botão: AGENDAR HORÁRIO (WhatsApp) -->
@@ -421,12 +420,12 @@
                 mainContainer.classList.add('initial-visible');
             }, 50);
 
-            // Mensagem pré-preenchida
+            // MENSAGEM SIMPLIFICADA (Ajustada conforme o pedido)
             const prefilledMessage = 
-                `Olá ${barbershopName}! Gostaria de agendar um horário.%0A%0ASolicito os seguintes dados para o agendamento:%0A%0A1. Qual serviço você deseja? (Ex: Corte, Barba, Combo)%0A2. Qual o seu nome completo?%0A3. Qual o melhor dia e horário para você?`;
+                `Olá ${barbershopName}! Gostaria de agendar um horário.`;
 
             // CRIAÇÃO DA URL FINAL
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${prefilledMessage}`;
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(prefilledMessage)}`;
 
             // Atualização de todos os links
             document.getElementById('whatsapp-link').href = whatsappUrl;
